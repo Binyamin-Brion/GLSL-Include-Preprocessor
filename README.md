@@ -10,7 +10,7 @@ As a result, there are two possible solutions when trying to split a long GLSL f
    before the GLSL compiler sees it.
    
 The problem with the first alternative is that the source file can become very long, to the
-point of being unmanaegable.
+point of being unmanageable.
 
 This program provides the second alternative.
 
