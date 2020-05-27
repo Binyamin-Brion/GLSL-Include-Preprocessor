@@ -1,0 +1,27 @@
+#version 330 core
+
+in vec3 lineColour;
+
+out vec4 FragColor;
+
+void main()
+{
+    FragColor = vec4(lineColour, 1.0f);
+}
+
+#version 330 core
+
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 inLineColour;
+
+out vec3 lineColour;
+
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+
+void main()
+{
+    lineColour = inLineColour;
+
+    gl_Position = projectionMatrix * viewMatrix * vec4(aPos, 1.0);
+}

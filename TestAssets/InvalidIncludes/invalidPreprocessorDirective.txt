@@ -1,0 +1,3 @@
+// The following preprocessor directive is not a '#include' nor one of GLSL supported directive
+
+#someInvalidPreprocessorDirective

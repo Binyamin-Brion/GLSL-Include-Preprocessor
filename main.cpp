@@ -1,8 +1,25 @@
 #include <fstream>
-#include "PreprocessorInclude/IncludeImplementation.h"
+#include "Tests/TestSuite.h"
+#include <QTest>
+#include "PreprocessorInclude/RecursiveInclude.h"
 
 int main(int argc, char *argv[])
 {
+    auto testSuite = Tests::TestSuite::suite();
+
+    // Only run the tests if they were specified in the program arguments.
+    // Note: index 0 is the program name; it is not checked if it corresponds to a test.
+    for(int i = 1; i < argc; ++i)
+    {
+        for(auto &test: testSuite)
+        {
+            if(test.first == argv[i])
+            {
+                QTest::qExec(test.second);
+            }
+        }
+    }
+
     /*
      * The three expected arguments are as follows:
      *
@@ -10,9 +27,9 @@ int main(int argc, char *argv[])
      * #2 - The file containing the contents to perform the include operation
      * #3 - The location in which to store the execution result (as after this program ends, the execution result is freed from memory).
      */
-    const unsigned int EXPECTED_NUMBER_ARGUMENTS = 3;
+    const unsigned int EXPECTED_NUMBER_ARGUMENTS = 2;
 
-    if(argc > EXPECTED_NUMBER_ARGUMENTS)
+    if(argc != EXPECTED_NUMBER_ARGUMENTS)
     {
         printf("Wrong number of program arguments- expected two, received: %d \n", argc);
 
@@ -32,7 +49,7 @@ int main(int argc, char *argv[])
 
     try
     {
-        auto preprocessorResult = PreprocessorInclude::IncludeImplementation::execute(argv[1]);
+        auto preprocessorResult = PreprocessorInclude::RecursiveInclude::execute(argv[1]);
 
         for(const auto &line : preprocessorResult)
         {
