@@ -18,11 +18,11 @@ This program provides the second alternative.
 
 There are two ways to use this program:
 
-* Use the provided executable. Then, the program would be used like the following:
+* Use the provided executable located in the executable folder. Then, the program would be used like the following:
 
-  system(_locationToTheExecutable_, _locationToFileToRunPreprocessorOn_, _locationOutput_, _true_)
+  system(_locationToTheExecutable_ +  _locationToFileToRunPreprocessorOn_ +  _locationOutput_ +  _true_)
   
-  **_The value of 'true' means abort execution if a file line contains a line starting with a '#' that is neither a "#include" nor a GLSL preprocessor directive. If no action should be taken, pass in false._**
+  **_The value of 'true' means abort execution if a file line contains a line starting with a '#' that is neither a "#include" nor a GLSL preprocessor directive. If no action should be taken, pass in false. If neither true or false is passed, then true is assumed._**
   
   **Using the _system_ call may not be the best choice due to security reasons. If there is an alternative way to invoke an executable from a program available, it may be worth considering.**
 
