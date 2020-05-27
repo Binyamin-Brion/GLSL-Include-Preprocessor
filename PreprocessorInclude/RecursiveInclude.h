@@ -40,7 +40,7 @@ namespace PreprocessorInclude
              * @return vector of strings of the result of running the pre-processor; every element represents a line
              *                had the result been written to a file.
              */
-            static std::vector<std::string> execute(const QString &fileLocation, bool ignoreUnknownDirective = false);
+            static std::vector<std::string> execute(const QString &fileLocation, bool ignoreUnknownDirective);
 
             /**
              * Replaces the execution result with the equivalent content stored as a string.

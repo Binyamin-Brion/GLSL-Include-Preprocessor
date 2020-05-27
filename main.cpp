@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
 
     // Only run the tests if they were specified in the program arguments.
     // Note: index 0 is the program name; it is not checked if it corresponds to a test.
+    // The tests will only work if the project structure is the same as development, so that the
+    // test asset folder can be found.
     for(int i = 1; i < argc; ++i)
     {
         for(auto &test: testSuite)
@@ -26,12 +28,13 @@ int main(int argc, char *argv[])
      * #1 - The program name (convention is that this is the first program argument, even if not specified- it is unused here).
      * #2 - The file containing the contents to perform the include operation
      * #3 - The location in which to store the execution result (as after this program ends, the execution result is freed from memory).
+     * #4 - boolean specifying whether or not to abort execution on reading an unknown file line starting with a '#'.
      */
-    const unsigned int EXPECTED_NUMBER_ARGUMENTS = 2;
+    const unsigned int EXPECTED_NUMBER_ARGUMENTS = 4;
 
-    if(argc != EXPECTED_NUMBER_ARGUMENTS)
+    if(argc < EXPECTED_NUMBER_ARGUMENTS)
     {
-        printf("Wrong number of program arguments- expected two, received: %d \n", argc);
+        printf("Wrong number of program arguments- expected at least four, received: %d \n", argc);
 
         return -1;
     }
@@ -49,12 +52,9 @@ int main(int argc, char *argv[])
 
     try
     {
-        auto preprocessorResult = PreprocessorInclude::RecursiveInclude::execute(argv[1]);
+        auto preprocessorResult = PreprocessorInclude::RecursiveInclude::execute(argv[1], std::string{argv[3]} == "false");
 
-        for(const auto &line : preprocessorResult)
-        {
-            writeContents << line;
-        }
+        writeContents << PreprocessorInclude::RecursiveInclude::mergeExecutionResults(preprocessorResult);
     }
     catch(std::exception &e)
     {

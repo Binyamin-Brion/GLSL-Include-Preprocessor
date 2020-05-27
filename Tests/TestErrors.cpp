@@ -23,7 +23,7 @@ namespace Tests
     {
         try
         {
-            RecursiveInclude::execute(getTestAssetFolder() + "/illFormedIncludeFileName.txt");
+            RecursiveInclude::execute(getTestAssetFolder() + "/illFormedIncludeFileName.txt", true);
         }
         catch(std::exception &e)
         {
@@ -44,7 +44,7 @@ namespace Tests
     {
         try
         {
-            RecursiveInclude::execute(getTestAssetFolder() + "/illFormedIncludeLine.txt");
+            RecursiveInclude::execute(getTestAssetFolder() + "/illFormedIncludeLine.txt", true);
         }
         catch(std::exception &e)
         {
@@ -67,7 +67,7 @@ namespace Tests
         {
             // See the testAsset file for a note about this test- in some instances this test could fail even if the program
             // correctly works due to the location of where the test asset folder is located.
-            RecursiveInclude::execute(getTestAssetFolder() + "/invalidDirectory.txt");
+            RecursiveInclude::execute(getTestAssetFolder() + "/invalidDirectory.txt", true);
         }
         catch(std::exception &e)
         {
@@ -88,7 +88,7 @@ namespace Tests
     {
         try
         {
-            RecursiveInclude::execute(getTestAssetFolder() + "/aNonExistentFile.txt");
+            RecursiveInclude::execute(getTestAssetFolder() + "/aNonExistentFile.txt", true);
         }
         catch(std::exception &e)
         {
@@ -109,7 +109,7 @@ namespace Tests
     {
         try
         {
-            RecursiveInclude::execute(getTestAssetFolder() + "/invalidPreprocessorDirective.txt");
+            RecursiveInclude::execute(getTestAssetFolder() + "/invalidPreprocessorDirective.txt", true);
         }
         catch(std::exception &e)
         {

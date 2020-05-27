@@ -21,7 +21,7 @@ namespace Tests
 
     void TestNoIncludes::testEmptyFile()
     {
-        auto includeResult = RecursiveInclude::execute(getTestAssetFolder() + "/empty.txt");
+        auto includeResult = RecursiveInclude::execute(getTestAssetFolder() + "/empty.txt", true);
 
         QVERIFY(includeResult.empty());
         QVERIFY(RecursiveInclude::mergeExecutionResults(includeResult).empty());
@@ -29,9 +29,7 @@ namespace Tests
 
     void TestNoIncludes::testFileNoIncludes()
     {
-        RecursiveInclude recursiveInclude;
-
-        auto includeResult = recursiveInclude.execute(getTestAssetFolder() + "/contentNoIncludes.txt");
+        auto includeResult = RecursiveInclude::execute(getTestAssetFolder() + "/contentNoIncludes.txt", true);
 
         QVERIFY(!includeResult.empty());
         QVERIFY(includeResult.size() == 16); // This is how many files there are in the asset file.

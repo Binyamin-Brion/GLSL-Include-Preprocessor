@@ -21,7 +21,7 @@ namespace Tests
 
     void TestSingleInclude::testIncludeFirstLine()
     {
-        auto includeResult = RecursiveInclude::execute(getTestAssetFolder() + "/includeFirstLine.txt");
+        auto includeResult = RecursiveInclude::execute(getTestAssetFolder() + "/includeFirstLine.txt", true);
 
         const QString errorMessage = "This many lines were received: " + QString::number(includeResult.size());
 
@@ -34,7 +34,7 @@ namespace Tests
 
     void TestSingleInclude::testIncludeMiddleLine()
     {
-        auto includeResult = RecursiveInclude::execute(getTestAssetFolder() + "/includeMiddleLine.txt");
+        auto includeResult = RecursiveInclude::execute(getTestAssetFolder() + "/includeMiddleLine.txt", true);
 
         const QString errorMessage = "This many lines were received: " + QString::number(includeResult.size());
 
@@ -47,7 +47,7 @@ namespace Tests
 
     void TestSingleInclude::testIncludeRelative()
     {
-        auto includeResult = RecursiveInclude::execute(getTestAssetFolder() + "/includeFirstLineRelative.txt");
+        auto includeResult = RecursiveInclude::execute(getTestAssetFolder() + "/includeFirstLineRelative.txt", true);
 
         const QString errorMessage = "This many lines were received: " + QString::number(includeResult.size());
 
