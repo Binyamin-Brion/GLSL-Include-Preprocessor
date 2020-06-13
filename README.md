@@ -54,10 +54,10 @@ Additionally, the CMake file will need to be updated to point to the location of
 
   This is some text from the second program
   
-**system("GLSL-Include-Preprocessor", "File1.txt", "Output.txt", true)**
+**system("GLSL-Include-Preprocessor File1.txt Output.txt true")**
 
 **Output.txt:**
 
   This is some text from the second program
   
-  This is some test in the first program
+  This is some text in the first program
